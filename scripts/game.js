@@ -1,6 +1,26 @@
 // humanScore = 0;
 //computerScore = 0;
 
+let humanScore = 0;
+let computerScore = 0;
+
+function getComputerChoice() {
+
+    let getRandomNumber = Math.random();
+    
+    if(getRandomNumber <= 0.4) {
+        console.log("rock");
+    } else if (getRandomNumber <= 0.7) {
+        console.log("paper");
+    } else {
+        console.log("scissors");
+    }
+}
+
+
+
+getComputerChoice();
+
 // FUNCTION getComputerChoice
     // pick rock, paper or scissors using math.random
     // LOG choice
