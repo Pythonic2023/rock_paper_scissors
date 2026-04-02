@@ -4,6 +4,7 @@
 let humanScore = 0;
 let computerScore = 0;
 
+
 // FUNCTION getComputerChoice
     // pick rock, paper or scissors using math.random
     // LOG choice
@@ -12,41 +13,23 @@ function getComputerChoice() {
 
     let getRandomNumber = Math.random();
     
-    if(getRandomNumber <= 0.4) {
-        console.log("rock");
-    } else if (getRandomNumber <= 0.7) {
-        console.log("paper");
+    if(getRandomNumber <= 0.33) {
+        return "rock";
+    } else if (getRandomNumber <= 0.66) {
+        return "paper";
     } else {
-        console.log("scissors");
+        return "scissors";
     }
 }
-
-getComputerChoice();
 
 // FUNCTION getHumanChoice
     // PROMPT to get players choice, store in var
     // LOG choice
 
 function getHumanChoice(){
-    // If user is playing outside of browser in node.js then run this.
-    try {
-        const readline = require('readline').createInterface({
-            input: process.stdin,
-            output: process.stdout
-        });
-
-        readline.question("Pick: Rock, Paper or Scissors: ", choice => {
-            console.log(`You picked ${choice}`);
-            readline.close();
-        });
-    // If user is playing in browser run this.
-    } catch {
-        let humanChoice = prompt("Pick: Rock, Paper or Scissors: ");
-        console.log(humanChoice);
-    }
+    let humanChoice = prompt("Pick: Rock, Paper or Scissors: ");
+    return humanChoice;
 }
-
-getHumanChoice();
 
 // FUNCTION playRound(PARAM, PARAM)
     // define which object beats what
@@ -55,6 +38,30 @@ getHumanChoice();
     // incremement winners score
 
 
+function playRound(computerSelection, humanSelection) {
+    if(computerSelection === "rock" && humanSelection === "scissors"){
+        console.log("computer won")
+        computerScore += 1;
+        console.log(`computer score: ${computerScore}`);
+    } else if(computerSelection === "scissors" && humanSelection === "paper"){
+        console.log("computer won");
+        computerScore += 1;
+        console.log(`computer score: ${computerScore}`);
+    } else if(computerSelection === "paper" && humanSelection === "rock"){
+        console.log("computer won");
+        computerScore += 1;
+        console.log(`computer score: ${computerScore}`);
+    } else {
+        console.log("human won");
+        humanScore += 1;
+        console.log(`human score: ${humanScore}`);
+    }
+}
+
+let computerSelection = getComputerChoice();
+let humanSelection = getHumanChoice();
+
+playRound(computerSelection, humanSelection);
 // AFTER THE ABOVE WORKS
 
 // FUNCTION playGame
