@@ -24,21 +24,13 @@ function playGame(){
 
     function playRound(computerSelection, humanSelection) {
         if(computerSelection === "rock" && humanSelection === "scissors"){
-            console.log("computer won")
             computerScore += 1;
-            console.log(`computer score: ${computerScore}`);
         } else if(computerSelection === "scissors" && humanSelection === "paper"){
-            console.log("computer won");
             computerScore += 1;
-            console.log(`computer score: ${computerScore}`);
         } else if(computerSelection === "paper" && humanSelection === "rock"){
-            console.log("computer won");
             computerScore += 1;
-            console.log(`computer score: ${computerScore}`);
         } else {
-            console.log("human won");
             humanScore += 1;
-            console.log(`human score: ${humanScore}`);
             }
         }
     
@@ -49,6 +41,11 @@ function playGame(){
         counter += 1
         if(counter === 5){
             keepGoing = false;
+            if(computerScore > humanScore){
+                console.log(`Computer won with a score of ${computerScore} out of 5`);
+            } else {
+                console.log(`Human won with a score of ${humanScore} out of 5`);
+            }
         }
     }
 }
