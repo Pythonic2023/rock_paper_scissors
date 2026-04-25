@@ -18,44 +18,48 @@ function getHumanChoice(){
 
 let humanScore = 0;
 let computerScore = 0;
+let counter = 0;
 
 function playGame(computerSelection, humanSelection){
-    let keepGoing = true;
-    let counter = 0;
     playRound(computerSelection, humanSelection);
     function playRound(computerSelection, humanSelection) {
-        if(computerSelection === "Rock" && humanSelection === "Scissors"){
+        tie.textContent = "";
+        if(computerSelection === humanSelection){
+            tie.textContent = "It was a tie!";
+            counter == counter;
+        } else if(computerSelection === "Rock" && humanSelection === "Scissors"){
             computerScore += 1;
             displayComputer.textContent = `Computer Score: ${computerScore}`;
+            counter += 1;
         } else if(computerSelection === "Scissors" && humanSelection === "Paper"){
+            computerScore += 1;
             displayComputer.textContent = `Computer Score: ${computerScore}`;
+            counter += 1;
         } else if(computerSelection === "Paper" && humanSelection === "Rock"){
+            computerScore += 1;
             displayComputer.textContent = `Computer Score: ${computerScore}`;
+            counter += 1;
         } else {
-            humanScore += 1;
-            displayHuman.textContent = `Human Score: ${humanScore}`;
+                humanScore += 1;
+                displayHuman.textContent = `Human Score: ${humanScore}`;
+                counter += 1;
             }
         }
-    while(keepGoing){
-        let computerSelection = getComputerChoice();
-        let humanChoice = humanSelection;
-        playRound(computerSelection, humanSelection);
-        counter += 1
-        if(counter === 5){
-            keepGoing = false;
-            if(computerScore > humanScore){
-                endGameScore.textContent = `Computer won with a score of ${computerScore} out of 5`
+
+        if(counter == 5){
+            if(computerScore < humanScore){
+                endGameScore.textContent = `Human won with the score: ${humanScore} of 5`;
             } else {
-                endGameScore.textContent = `Human won with a score of ${humanScore} out of 5`;
+                endGameScore.textContent = `Computer won with the score: ${computerScore} of 5`;
             }
         }
-    } 
 }
 
 let rpsDiv = document.querySelector('.rps-buttons');
 const displayComputer = document.querySelector('.computer-score');
 const displayHuman = document.querySelector('.human-score');
 const endGameScore = document.querySelector('.end-game-score');
+const tie = document.querySelector('.tie');
 
 const rock = document.createElement('button');
 rock.innerText = "Rock";
